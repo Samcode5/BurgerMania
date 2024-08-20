@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./burgerpage.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+    />
+    <!-- <link rel="stylesheet" 
+    href="https://bootswatch.com/5/yeti/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+    <header id="header">
+      <span id="heading"> Kings Burger</span> 
+  
+        <img id="icon" src="./images/burgerIcon.png" width="30" height="25">
+</header>
+    <div class="MainContainer">
+        <h2>Our Menu</h2>
+        <div class="Container">
+            <div class="menuContainer">
+                <img src="./images/veg.jfif" height="100" width="150">
+                <h4 id="cheeseChilli">Cheese Chilli </h4>
+                <select >
+                    <option value="Veg">veg</option>
+                    <option value="nonVeg">non-veg</option>
+                    <option value="egg">egg</option>
+                </select>
+                <label for="qty">Qty:</label>
+                <input type="number" id="qty" max="5">
+                <button type="button" class="btn btn-success" onclick="handleCart(this)">Add to Cart</button>
+                <button type="button" class="btn btn-danger" onclick="handleRemove(this)">Clear Cart</button>
+            </div>
+            <div class="menuContainer">
+                <img src="./images/whopper.jfif" height="100" width="150">
+                <h4 id="tandoriGrill">Tandoori Grill </h4>
+                <select >
+                    <option value="Veg">veg</option>
+                    <option value="nonVeg">non-veg</option>
+                    <option value="egg">egg</option>
+                </select>
+                <label for="qty">Qty:</label>
+                <input type="number" id="qty" max="5">
+                <button type="button" class="btn btn-success" onclick="handleCart(this)">Add to Cart</button>
+                <button type="button" class="btn btn-danger" onclick="handleRemove(this)">Clear Cart</button>
+            </div>
+            <div class="menuContainer">
+                <img src="./images/surprise.jfif" height="100" width="150">
+                <h4 id="surprise">Surprise</h4>
+                <select >
+                    <option value="Veg">veg</option>
+                    <option value="nonVeg">non-veg</option>
+                    <option value="egg">egg</option>
+                </select>
+                <label for="qty">Qty:</label>
+                <input type="number" id="qty" max="5">
+                <button type="button" class="btn btn-success" onclick="handleCart(this)">Add to Cart</button>
+                <button type="button" class="btn btn-danger" onclick="handleRemove(this)">Clear Cart</button>
+            </div>
+            <div class="menuContainer">
+                <img src="./images/crispy.jfif" height="100" width="150">
+                <h4 id="whopper">Whopper </h4>
+                <select >
+                    <option value="Veg">veg</option>
+                    <option value="nonVeg">non-veg</option>
+                    <option value="egg">egg</option>
+                </select>
+                <label for="qty">Qty:</label>
+                <input type="number" id="qty" max="5">
+                <button type="button" class="btn btn-success" onclick="handleCart(this)">Add to Cart</button>
+                <button type="button" class="btn btn-danger" onclick="handleRemove(this)">Clear Cart</button>
+            </div>
+            <div class="menuContainer">
+                <img src="./images/surprise.jfif" height="100" width="150">
+                <h4 id="crispySurprise">Crispy Surprise </h4>
+                <select >
+                    <option value="Veg">veg</option>
+                    <option value="nonVeg">non-veg</option>
+                    <option value="egg">egg</option>
+                </select>
+                <label for="qty">Qty:</label>
+                <input type="number" id="qty" max="5" required>
+                <button type="button" class="btn btn-success" onclick="handleCart(this)">Add to Cart</button>
+                <button type="button" class="btn btn-danger" onclick="handleRemove(this)">Remove Item</button>
+            </div>
+        </div>
+        <div id="cart">
+            <button type="button" id="viewCart" class="btn btn-info"  >View Cart</button>
+        </div>
+    </div>
+    <script src="burger.js">
+      
+    </script>
+</body>
+</html>

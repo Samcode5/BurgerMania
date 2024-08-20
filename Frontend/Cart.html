@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" 
+  href="https://bootswatch.com/5/yeti/bootstrap.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <div>
+        <div class="header">My Cart</div>
+        <table id="table" class="table table-light table-striped-columns table-hover">
+            <thead>
+                <tr>
+                    <th>Burger Type</th>
+                    <th>Burger Category</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                </tr>
+            </thead>
+            <tbody >
+            </tbody>
+
+        </table>
+        <div class="footer">
+          <p id="total">Total Price :</p>
+         <p id ="qty">Quantity:</p>
+         <button class="btn btn-dark" id="button">Place Order</button>
+        </div>
+    </div>
+
+    <script >
+    var map={
+    1:"cheeseChilli",
+    2:"tandoriGrill",
+    3:"surprise",
+    4:"whopper",
+    5:"crispySurprise"
+}
+var burgerTypeMap={
+    1:"Veg",
+    2:"NonVeg",
+    3:"Egg"
+}
+
+        function $(id)
+        {
+            return document.getElementById(id);
+        }
+        var  Total=JSON.parse(localStorage.getItem("Total"));
+        var burgerTypes=JSON.parse(localStorage.getItem("burgerType"));
+        var typeOfBurger=JSON.parse(localStorage.getItem("typeOfBurger"));
+     console.log(burgerTypes);
+     console.log(typeOfBurger);
+     console.log(Total)
+     var table=$("table").getElementsByTagName('tbody')[0];
+     var qty=0;
+    //  for(i in burgerTypes)
+    //  {
+    //     for(j in burgerTypes[i])
+    //  {
+    //      console.log(burgerTypes[i][j],j);
+      
+    //      //veg
+    //      if(burgerTypes[i][j][0]!=0 )
+    //      {
+    //         qty+=burgerTypes[i][j][0];
+    //         const newRow=table.insertRow();
+    //         const cell1=newRow.insertCell(0);
+    //         const cell2=newRow.insertCell(1);
+    //         const cell3=newRow.insertCell(2);
+    //         const cell4=newRow.insertCell(3);
+    //         const cell5=newRow.insertCell(4);
+
+    //         cell1.innerHTML=j;
+    //         cell2.innerHTML="Veg"
+    //         cell3.innerHTML="100"
+    //         cell4.innerHTML=burgerTypes[i][j][0];
+    //         cell5.innerHTML=100*burgerTypes[i][j][0];
+
+
+    //      }
+    //     //non veg
+    //      if(burgerTypes[i][j][1]!=0 )
+    //      {
+    //         qty+=burgerTypes[i][j][1];
+    //         const newRow=table.insertRow();
+    //         const cell1=newRow.insertCell(0);
+    //         const cell2=newRow.insertCell(1);
+    //         const cell3=newRow.insertCell(2);
+    //         const cell4=newRow.insertCell(3);
+    //         const cell5=newRow.insertCell(4);
+
+    //         cell1.innerHTML=j;
+    //         cell2.innerHTML="NonVeg"
+    //         cell3.innerHTML="200"
+    //         cell4.innerHTML=burgerTypes[i][j][1];
+    //         cell5.innerHTML=200*burgerTypes[i][j][1];
+    //      }
+    //     //egg
+    //      if(burgerTypes[i][j][2]!=0 )
+    //      {
+    //         qty+=burgerTypes[i][j][2];
+    //         const newRow=table.insertRow();
+    //         const cell1=newRow.insertCell(0);
+    //         const cell2=newRow.insertCell(1);
+    //         const cell3=newRow.insertCell(2);
+    //         const cell4=newRow.insertCell(3);
+    //         const cell5=newRow.insertCell(4);
+
+    //         cell1.innerHTML=j;
+    //         cell2.innerHTML="Egg";
+    //         cell3.innerHTML="150"
+    //         cell4.innerHTML=burgerTypes[i][j][2];
+    //         cell5.innerHTML=150*burgerTypes[i][j][2];
+    //      }
+    //     }
+    // }
+
+   var body=[]
+   
+    var btn=$('button').onclick=function(){
+        alert("Order Placed Sucessfully");
+        let len=0;
+
+        fetch('https://localhost:7287/api/OrdersAPI', {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(data => data.json())
+      .then(response => {
+        console.log("Inside Get  body");
+        console.log(response)
+        var max_id=0;
+        len=response.length;
+        var burgerdata={userNumber:"",burgerID:0,BurgerName:"",burgerType:"",Quantity:0,Price:0}
+        var userData=JSON.parse(localStorage.getItem("UserData"));
+        console.log(userData.Number);
+        
+
+        response.forEach((ele)=>{
+            //  max_id=Math.max(max_id,ele.burgerID);
+            //  burgerdata.BurgerName=ele.burgerName;
+            //  burgerdata.Price=ele.price;
+            //  burgerdata.Quantity=ele.quantity;
+            //  burgerdata.burgerID=ele.burgerID;
+            //  burgerdata.burgerType=ele.burgerType;
+            //  burgerdata.userNumber=userData.Number;
+             console.log("ele",ele);
+             var id=ele.id;
+             fetch(`https://localhost:7287/api/OrdersAPI/${id}`, {
+                         method: 'DELETE'
+                     })
+                    .then(response => {
+                         if (!response.ok) {
+                             throw new Error('Network response was not ok ' + response.statusText);
+                         }
+                        
+                     })
+                     .then(data => {
+                         console.log('Success:', data); // Handle success
+                     })
+                     .catch(error => {
+                         console.error('Error:', error); 
+                     });
+
+
+         
+
+        })
+        
+          
+        console.log(body);
+     
+
+
+ 
+        
+
+
+   
+
+
+
+    })
+
+     //put the  final order in orderItems 
+     var userData=JSON.parse(localStorage.getItem("UserData"));
+     console.log("userdata",userData);
+
+
+     
+
+    fetch("")
+    }
+
+    var new_total=Total;
+
+ 
+
+var len=0;
+var Total=0;
+var new_total=Total;
+
+fetch('https://localhost:7287/api/OrdersAPI', {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(data => data.json())
+      .then(response => {
+        console.log("Inside Get body");
+        console.log(response)
+        len=response.length;
+
+        response.forEach(ele => {
+
+            console.log(map[ele.burgerId]);
+            const newRow=table.insertRow();
+            const cell1=newRow.insertCell(0);
+            const cell2=newRow.insertCell(1);
+            const cell3=newRow.insertCell(2);
+            const cell4=newRow.insertCell(3);
+            const cell5=newRow.insertCell(4);
+
+
+            cell1.innerHTML=map[ele.burgerId];
+            cell2.innerHTML= burgerTypeMap[ele.burgeTypeId];
+            cell3.innerHTML=ele.price;
+            cell4.innerHTML=ele.quantity;
+            cell5.innerHTML=(ele.price)*ele.quantity;
+            Total+=(ele.price)*ele.quantity;
+
+        });
+
+        console.log(Total);
+        if(Total>=500 && Total<1000)
+    {
+        new_total=Total*5/100;
+        new_total=Total-new_total
+        
+    }
+
+    else if(Total>=1000)
+    {
+        new_total=Total*10/100;
+        new_total=Total-new_total
+        
+    }
+
+    if(Total<500)
+    {
+        $('total').innerHTML+=Total;
+        $('qty').innerText+=len;
+    }
+
+   else 
+   {$('total').innerHTML+=`<span id="oldTotal">${Total}</span><span id="newTotal">${new_total}</span>`;
+    $('qty').innerText+=len;
+}
+    });
+
+    
+   
+
+        
+    </script>
+</body>
+</html> 

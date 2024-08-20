@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerProject", "BurgerProject\BurgerProject.csproj", "{E7B76E77-8C13-4043-AA8E-0E09D866CF0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerManiaTest", "BurgerManiaTest\BurgerManiaTest.csproj", "{724C6FE2-A5D1-4BDA-A6A5-43B01BE537CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7B76E77-8C13-4043-AA8E-0E09D866CF0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7B76E77-8C13-4043-AA8E-0E09D866CF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7B76E77-8C13-4043-AA8E-0E09D866CF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7B76E77-8C13-4043-AA8E-0E09D866CF0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724C6FE2-A5D1-4BDA-A6A5-43B01BE537CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724C6FE2-A5D1-4BDA-A6A5-43B01BE537CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724C6FE2-A5D1-4BDA-A6A5-43B01BE537CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724C6FE2-A5D1-4BDA-A6A5-43B01BE537CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55396FA7-09AC-453D-AC77-496BD4429500}
+	EndGlobalSection
+EndGlobal
